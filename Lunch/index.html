@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Weiben - Wheel of fortune</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />    
+  </head>
+
+  <body>
+    <div id="app">
+      <img class="marker" src="marker.png" />
+      <div id="myChart" class="wheel"></div>
+      <img class="button" src="button.png" />
+    </div>
+
+    <script src="script.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    google.charts.load('current', {'packages':['corechart']}); 
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string','Foods');
+        data.addColumn('number','비중');
+
+        data.addRows([ 
+            ['돼지국밥',1],
+            ['돈까스',1],
+            ['제육',1],
+            ['중국집',1],
+            ['설렁탕',1],
+            ['순두부',1],
+            ['냉라면',1]
+        ]);
+        var opt = {
+                pieSliceText:'label',
+                legend:'none' 
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('myChart'));
+        chart.draw(data,opt);
+    }
+
+    </script>
+  </body>
+</html>
